@@ -19,7 +19,9 @@ const options = {
 var app = ex();
 app.use(ex.static('img'))
 app.set('view engine', 'ejs')
-app.listen(3005)
+app.listen(process.env.PORT || 3003, function() {
+    console.log("Express server listening on port %d in %s mode", this.address().port, app.settings.env);
+});
 app.get('/', async(req, res) => {
     const baseUrl = 'http://eu.httpbin.org/stream-bytes/50000000';
     var fileSizeInBytes = 50000000;
@@ -29,6 +31,8 @@ app.get('/', async(req, res) => {
 
 
     var downmb = down.mbps * 0.125
+    var downmb = downmb - (0.25 * downmb)
     var upmb = up.mbps * 0.125
+    var upmb = upmb - (0.25 * upmb)
     res.render('index', { up: upmb.toFixed(2), down: downmb.toFixed(2) })
 })

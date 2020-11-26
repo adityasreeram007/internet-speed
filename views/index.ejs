@@ -19,6 +19,10 @@
         .val {
             font-size: x-large;
         }
+        
+        .btn {
+            margin-top: 5%;
+        }
     </style>
 </head>
 
@@ -29,7 +33,7 @@
         <center>
             <div class="head">Upload Speed</div><br>
 
-            <div class="val">
+            <div class="val" id="upval">
                 <%=up%> MB/s</div>
         </center>
         <hr>
@@ -37,8 +41,9 @@
             <div class="head">Download Speed</div>
             <br>
 
-            <div class="val">
+            <div class="val" id="downval">
                 <%=down%> MB/s</div>
+            <button class="btn btn-dark" onclick="reload()">Check Again!</button>
         </center>
     </div>
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
@@ -48,3 +53,8 @@
 </body>
 
 </html>
+<script>
+    function reload() {
+        location.reload();
+    }
+</script>
